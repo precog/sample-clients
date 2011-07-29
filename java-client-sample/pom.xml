@@ -63,7 +63,7 @@
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>com.reportgrid.ReportGridClientSample</mainClass>
+              <mainClass>com.reportgrid.ReportGridStringSample</mainClass>
             </manifest>
           </archive>
         </configuration>
