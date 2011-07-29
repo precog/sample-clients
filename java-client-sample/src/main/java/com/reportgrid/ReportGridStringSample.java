@@ -7,11 +7,6 @@ import java.io.IOException;
 import java.util.Date;
 
 public class ReportGridStringSample {
-		private static class TestData {
-			private final int testInt = 42;	
-			private final String testStr = "Hello World";
-		}
-
     public static final ToJson<String> toJson = new ToJson<String>() {
       public String serialize(String string) {
         return string;
