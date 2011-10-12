@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <title>MySite.com</title>
+    <link rel="stylesheet" type="text/css" href="http://api.reportgrid.com/css/rg.css"/>
+    <script type="text/javascript" src="./jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" src="http://api.reportgrid.com/js/reportgrid-core.js?tokenId=7A7C7D3E-E87F-41D6-932F-830FBDBC8866"></script>
+    <script type="text/javascript" src="http://api.reportgrid.com/js/reportgrid-viz.js"></script>
+    <script type="text/javascript">
+      jQuery(function($){
+        ReportGrid.lineChart("#chart", {
+          axes : [{
+            type : ".#time:hour"
+          }, {
+            type : "count"
+          }],
+          data : {
+            src : [{
+              path : "/ads/123",
+              event : "hover",
+              query : ".age * .#time:hour"
+            }],
+            start: "1 day ago",
+            end: "30 minutes ago"
+          }
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div id="chart"></div>
+  </body>
+<html>
+ 
+
