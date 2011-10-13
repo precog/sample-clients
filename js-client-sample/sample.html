@@ -1,7 +1,7 @@
 <html>
   <head>
     <title>MySite.com</title>
-    <script type="text/javascript" src="./jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
     <script type="text/javascript" src="http://api.reportgrid.com/js/reportgrid-core.js?tokenId=7A7C7D3E-E87F-41D6-932F-830FBDBC8866"></script>
     <script type="text/javascript">
       var locations = [
@@ -23,10 +23,26 @@
         true
       ];
 
+      var categories = [
+        "dining",
+        "travel",
+        "electronics",
+        "books",
+        "household",
+        "toys",
+        "services"
+      ];
+
+      var r = function(x) { return Math.floor(Math.random() * x); };
+
       var randomAgeRange = function() {
-        var r35 = function() { return Math.floor(Math.random() * 35); };
-        var ageBracketMin = Math.floor((r35() + r35()) / 2 / 10) * 10;
+        var ageBracketMin = Math.floor((r(35) + r(35)) / 2 / 10) * 10;
         return ageBracketMin + "-" + (ageBracketMin + 10);
+      };
+
+      var randomCategory = function() {
+        var catId = Math.floor((r(categories.length) + r(categories.length)) / 2)
+        return categories[catId];
       };
 
       var randomGender = function() { return Math.random() > 0.5 ? "male" : "female"; };
@@ -43,6 +59,7 @@
         ReportGrid.track("/ads/" + adId, {
           "hover": {
             "age": randomAgeRange(),
+            "category": randomCategory(),
             "gender": randomGender(),
             "#location": locations[Math.floor(Math.random() * 4)],
             "#timestamp": randomTime()
