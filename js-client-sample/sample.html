@@ -2,7 +2,7 @@
   <head>
     <title>MySite.com</title>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-    <script type="text/javascript" src="http://api.reportgrid.com/js/reportgrid-core.js?tokenId=7A7C7D3E-E87F-41D6-932F-830FBDBC8866&analyticsServer=http://appserver01.reportgrid.com:30020/"></script>
+    <script type="text/javascript" src="http://api.reportgrid.com/js/reportgrid-core.js?tokenId=FBEDE5D2-441E-4A8C-87EF-7F1144D7E9AB&analyticsServer=http://localhost:30020/"></script>
     <script type="text/javascript">
       var locations = [
         {
@@ -49,8 +49,7 @@
 
       var randomTime = function() { 
         var date = new Date();
-        date.setDate(Math.floor(Math.random() * 28) + 1);
-        date.setHours(Math.floor(Math.random() * 24) + 1);
+        date.setHours(Math.floor(Math.random() * date.getHours()) + 1);
         date.setMinutes(Math.floor(Math.random() * 60) + 1);
         return Math.random() < 0.90 ? date.getTime() : true;
       };
