@@ -7,33 +7,50 @@
     <script type="text/javascript" src="http://api.reportgrid.com/js/reportgrid-viz.js"></script>
     <script type="text/javascript">
       jQuery(function($){
-        ReportGrid.lineChart("#chart", {
-          axes : [{
-            type : ".#time:hour"
-          }, {
-            type : "count"
-          }],
-          data : {
-            src : [{
-              path : "/ads/123",
-              event : "hover",
-              query : ".age * .#time:hour",
-              start: "1 day ago",
-              end: "30 minutes ago"
-            }],
-          },
-          options: {
-            segmenon: ".age",
-            label: {
-              axis: function(type) { return type; }
-            }
-          }
-        });
+    //    ReportGrid.lineChart("#lineChart", {
+    //      axes : [{
+    //        type : ".#time:hour"
+    //      }, {
+    //        type : "count"
+    //      }],
+    //      data : {
+    //        src : [{
+    //          path : "/ads/123",
+    //          event : "hover",
+    //          query : ".age * .#time:hour",
+    //          start: "1 day ago",
+    //          end: "30 minutes ago"
+    //        }],
+    //      },
+    //      options: {
+    //        segmenton: ".age",
+    //        label: {
+    //          axis: function(type) { return type; }
+    //        }
+    //      }
+    //    });
+    //  });
+
+      ReportGrid.pieChart("#lc2", {
+        path : "/ads/123",
+        event : "hover",
+        property : ".age"
       });
+//        periodicity: "hour",
+//        start: "1 day ago",
+//        end: "30 minutes ago",
+//        options: {
+//          segmenton: ".age",
+//          label: {
+//            axis: function(type) { return type; }
+//          }
+//        }
+    });
     </script>
   </head>
   <body>
-    <div id="chart"></div>
+    <div id="lineChart"></div><p/>
+    <div id="lc2"></div>
   </body>
 <html>
  
