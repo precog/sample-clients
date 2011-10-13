@@ -17,10 +17,16 @@
             src : [{
               path : "/ads/123",
               event : "hover",
-              query : ".age * .#time:hour"
+              query : ".age * .#time:hour",
+              start: "1 day ago",
+              end: "30 minutes ago"
             }],
-            start: "1 day ago",
-            end: "30 minutes ago"
+          },
+          options: {
+            segmenon: ".age",
+            label: {
+              axis: function(type) { return type; }
+            }
           }
         });
       });
