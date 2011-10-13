@@ -3,7 +3,7 @@
     <title>MySite.com</title>
     <link rel="stylesheet" type="text/css" href="http://api.reportgrid.com/css/rg.css"/>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-    <script type="text/javascript" src="http://api.reportgrid.com/js/reportgrid-core.js?tokenId=7A7C7D3E-E87F-41D6-932F-830FBDBC8866"></script>
+    <script type="text/javascript" src="http://api.reportgrid.com/js/reportgrid-core.js?tokenId=7A7C7D3E-E87F-41D6-932F-830FBDBC8866?&analyticsServer=http://appserver01.reportgrid.com:30020/"></script>
     <script type="text/javascript" src="http://api.reportgrid.com/js/reportgrid-viz.js"></script>
     <script type="text/javascript">
       jQuery(function($){
@@ -35,6 +35,23 @@
           event : "hover",
           property : ".age"
         });
+
+        ReportGrid.heatGrid("#hg", {
+          axes : [
+            { type : ".age" }, 
+            { type : ".category" },
+            { type : "count" }
+          ],
+          data: {
+            src: [{
+              path : "/ads/123",
+              event : "hover",
+              query: ".age * .category",
+              start: "1 day ago",
+              end: "30 minutes ago"
+            }]
+          }
+        });
 //        periodicity: "hour",
 //        start: "1 day ago",
 //        end: "30 minutes ago",
@@ -50,6 +67,7 @@
   <body>
     <div id="lineChart"></div><p/>
     <div id="lc2"></div>
+    <div id="hg"></div>
   </body>
 <html>
  
