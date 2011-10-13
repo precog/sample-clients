@@ -3,64 +3,15 @@
     <title>MySite.com</title>
     <script type="text/javascript" src="./jquery-1.6.4.min.js"></script>
     <script type="text/javascript" src="./reportgrid-core.js?tokenId=FBEDE5D2-441E-4A8C-87EF-7F1144D7E9AB&analyticsServer=http://localhost:30020/"></script>
+    <script type="text/javascript" src="./random_data.js"></script>
     <script type="text/javascript">
-      var locations = [
-        {
-          "city" : "USA/CO/Boulder",
-          "state" : "USA/CO",
-          "country": "USA"
-        },
-        {
-          "city" : "USA/CO/Denver",
-          "state" : "USA/CO",
-          "country": "USA"
-        },
-        {
-          "city" : "USA/CO/Lakewood",
-          "state" : "USA/CO",
-          "country": "USA"
-        },
-        true
-      ];
-
-      var categories = [
-        "dining",
-        "travel",
-        "electronics",
-        "books",
-        "household",
-        "toys",
-        "services"
-      ];
-
-      var r = function(x) { return Math.floor(Math.random() * x); };
-
-      var randomAgeRange = function() {
-        var ageBracketMin = Math.floor((r(35) + r(35)) / 2 / 10) * 10;
-        return ageBracketMin + "-" + (ageBracketMin + 10);
-      };
-
-      var randomCategory = function() {
-        var catId = Math.floor((r(categories.length) + r(categories.length)) / 2)
-        return categories[catId];
-      };
-
-      var randomGender = function() { return Math.random() > 0.5 ? "male" : "female"; };
-
-      var randomTime = function() { 
-        var date = new Date();
-        date.setHours(Math.floor(Math.random() * date.getHours()) + 1);
-        date.setMinutes(Math.floor(Math.random() * 60) + 1);
-        return Math.random() < 0.90 ? date.getTime() : true;
-      };
-
       var trackHover = function(adId) {
         ReportGrid.track("/ads/" + adId, {
           "hover": {
             "age": randomAgeRange(),
             "category": randomCategory(),
             "gender": randomGender(),
-            "#location": locations[Math.floor(Math.random() * 4)],
+            "#location": randomLocation(),
             "#timestamp": randomTime()
           }
         });
