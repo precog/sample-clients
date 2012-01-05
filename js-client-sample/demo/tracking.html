@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="ad.css" type="text/css"/>
+    <script type="text/javascript" src="./jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" src="./reportgrid-core.js?tokenId=A3BC1539-E8A9-4207-BB41-3036EC2C6E6D&analyticsServer=http://localhost:30020/"></script>
+    <script type="text/javascript" src="./random_data.js"></script>
+    <script type="text/javascript">
+      jQuery(function($) {
+        $("#myAd").hover(
+          function(ev) { $(this).toggleClass("bgred"); },
+          function(ev) {
+            ReportGrid.track("/ads/123", {
+              hover: {
+                ageRange: randomAgeRange(),
+                gender: randomGender(),
+                adCategory: randomCategory(),
+                "#timestamp": randomTime(),
+                "#location": randomLocation()
+              }
+            });
+
+            $(this).toggleClass("bgred");
+          }
+        );
+      });
+    </script>
+  </head>
+  <body>
+    <div id="myAd">Here is a very simple text ad.</div>
+  </body>
+</html>

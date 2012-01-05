@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="http://api.reportgrid.com/css/rg.css"/>
+    <script type="text/javascript" src="./jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" src="./reportgrid-core.js?tokenId=A3BC1539-E8A9-4207-BB41-3036EC2C6E6D&analyticsServer=http://localhost:30020/"></script>
+    <script type="text/javascript" src="./reportgrid-viz.js"></script>
+    <script type="text/javascript">
+      jQuery(function($){
+        ReportGrid.pieChart("#pieChart", {
+          path:"/ads/123",
+          event: "hover",
+          property: ".ageRange"
+        });
+
+        ReportGrid.lineChart("#lineChart", {
+          path:"/ads/123",
+          event: "hover",
+          property: ".ageRange",
+          start: "1 day ago",
+          end: "now"
+        });
+
+        ReportGrid.heatGrid("#heatGrid", {
+          axes : [
+            { type : ".ageRange" }, 
+            { type : ".adCategory" },
+            { type : "count" }
+          ],
+          data: {
+            src: [{
+              path : "/ads/123",
+              event : "hover",
+              query: ".ageRange * .adCategory",
+              start: "1 day ago",
+              end: "now"
+            }]
+          },
+          options: {
+            color: "interpolated-#FFFFFF,#FF7F0E"
+          }
+        });
+      });
+
+    </script>
+  </head>
+  <body>
+    <div id="pieChart"></div>
+    <div id="lineChart"></div><p/>
+    <div id="heatGrid"></div>
+  </body>
+<html>
+ 
+
